@@ -6,18 +6,15 @@ const inputArr = input
   .split("\n");
 
 function treeCount() {
-  let row = 1;
-  let col = 3;
+  let col = 0;
+  let row = 0;
   let count = 0;
+  const maxCol = inputArr[0].length;
+  const maxRow = inputArr.length;
   
-  while(row < inputArr.length) {
-    if(col > inputArr[row].length - 1) {
-      col = col - inputArr[row].length;
-    }
-
+  while(row < maxRow) {
     if(inputArr[row][col] === '#') count++;
-    
-    col = col + 3;
+    col = (col + 3) % maxCol;
     row++;
   }
   

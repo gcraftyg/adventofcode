@@ -4,14 +4,15 @@ const input = fs.readFileSync(inputPath, "utf8");
 const inputArr = input.split("\n");
 
 function treeCount(right, down) {
-  let col = right;
-  let row = down;
+  let col = 0;
+  let row = 0;
   let count = 0;
+  const maxCol = inputArr[0].length;
+  const maxRow = inputArr.length;
   
-  while(row < inputArr.length) {
-    if(col > inputArr[row].length - 1) col -= inputArr[row].length;
+  while(row < maxRow) {
     if(inputArr[row][col] === '#') count++;
-    col += right;
+    col = (col + right) % maxCol;
     row += down;
   }
   
